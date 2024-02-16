@@ -1,0 +1,20 @@
+def validace_hesla():
+    heslo = input("Zadejte heslo pro validaci: ")
+    
+    ma_velke_pismeno = any(znak.isupper() for znak in heslo)
+    ma_male_pismeno = any(znak.islower() for znak in heslo)
+    ma_cislo = any(znak.isdigit() for znak in heslo)
+    
+    if ma_velke_pismeno and ma_male_pismeno and ma_cislo:
+        print("Heslo je validní.")
+    else:
+        chyby = []
+        if not ma_velke_pismeno:
+            chyby.append("alespoň jedno velké písmeno")
+        if not ma_male_pismeno:
+            chyby.append("alespoň jedno malé písmeno")
+        if not ma_cislo:
+            chyby.append("alespoň jedno číslo")
+        print("Heslo není validní. Musí obsahovat " + ", ".join(chyby) + ".")
+
+validace_hesla()
